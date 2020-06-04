@@ -5,10 +5,12 @@ const routes = require('./routes/routes');
 const properties = require('./config/properties');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors({origin: 'http://localhost:4200'}));
 app.use(routes);
 
 /* db.query("SELECT 1 as val", (err, rows) => {
